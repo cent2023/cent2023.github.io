@@ -1,0 +1,30 @@
+title: CENT 2023
+url: "http://cent2023.github.io" 
+
+
+# Build settings
+markdown: kramdown
+
+collections:
+  presentations:
+    output: true
+    presenter: true
+    title: true
+    id: true
+    sort_by: presenter 
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      path: ""
+      type: "presentations" 
+    values:
+      layout: "presentation" 
+
+

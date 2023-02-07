@@ -1,0 +1,33 @@
+--- 
+layout: default
+---
+
+<div class="jumbotron psat-gold-blue">
+  <h4><b>{{page.title}}</b></h4>
+  <p class="lead">{{page.presenter}}</p>
+</div>
+
+<div style="text-align: justify;text-justify: inter-word;">
+{{content}}
+</div>
+
+<hr />
+
+Szekció: 
+{% assign id = page.id | remove: "/presentations/" %}
+{% for day in site.data.program %}
+  {% for event in day.events %}
+    {% if event.presentation == id %}
+      <a href="../sections.html#{{event.name}}"><b>{{event.name}}</b></a>
+    {% endif %}
+    {% if event.sections %}
+      {% for section in event.sections %}
+        {% for presentation in section.presentations %}
+          {% if presentation == id %}
+            <a href="../sections.html#{{event.name}}"><b>{{event.name}}</b> / {{section.name}}</a>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
